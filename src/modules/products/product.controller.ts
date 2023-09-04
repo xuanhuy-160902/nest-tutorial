@@ -75,10 +75,13 @@ export class ProductController {
   }
 
   @Put('/:id')
-  updateProduct(): ResponseData<string> {
+  updateProduct(
+    @Body() productDto: ProductDto,
+    @Param('id') id: string,
+  ): ResponseData<Product> {
     try {
-      const res = new ResponseData<string>(
-        this.productService.updateProduct(),
+      const res = new ResponseData<Product>(
+        this.productService.updateProduct(productDto, id),
         HttpStatus.SUCCESS,
         HttpMessage.SUCCESS,
       );
