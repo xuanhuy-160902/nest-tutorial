@@ -8,10 +8,10 @@ import {
   Put,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { ResponseData } from 'global/globalClass';
-import { HttpMessage, HttpStatus } from 'global/globalEnum';
-import { Product } from 'models/product.model';
-import { ProductDto } from 'dto/product.dto';
+import { ResponseData } from 'src/global/globalClass';
+import { HttpMessage, HttpStatus } from 'src/global/globalEnum';
+import { Product } from 'src/models/product.model';
+import { ProductDto } from 'src/dto/product.dto';
 
 @Controller('products')
 export class ProductController {
