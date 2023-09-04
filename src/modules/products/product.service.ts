@@ -14,7 +14,10 @@ export class ProductService {
   }
 
   createProducts(productDto: ProductDto): Product {
-    const newProduct: Product = { id: Math.random(), ...productDto };
+    const newProduct: Product = {
+      id: Math.round(Math.random() * 100),
+      ...productDto,
+    };
     this.products.push(newProduct);
     return newProduct;
   }
@@ -31,7 +34,12 @@ export class ProductService {
     return this.products[index];
   }
 
-  deleteProduct(): string {
-    return 'DELETE PRODUCT';
+  deleteProduct(id: string): boolean {
+    const index = this.products.findIndex((item) => item.id === parseInt(id));
+    if (index !== -1) {
+      this.products.splice(index, 1);
+      return true;
+    }
+    return false;
   }
 }
