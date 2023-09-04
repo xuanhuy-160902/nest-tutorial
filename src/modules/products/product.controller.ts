@@ -27,8 +27,8 @@ export class ProductController {
       );
       return res;
     } catch (err) {
-      const res = new ResponseData<Product[]>(
-        this.productService.getProducts(),
+      const res = new ResponseData<null>(
+        null,
         HttpStatus.ERROR,
         HttpMessage.ERROR,
       );
@@ -39,15 +39,15 @@ export class ProductController {
   @Post()
   createProducts(@Body() productDto: ProductDto): ResponseData<ProductDto> {
     try {
-      const res = new ResponseData<ProductDto>(
-        productDto,
+      const res = new ResponseData<Product>(
+        this.productService.createProducts(productDto),
         HttpStatus.SUCCESS,
         HttpMessage.SUCCESS,
       );
       return res;
     } catch (err) {
-      const res = new ResponseData<ProductDto>(
-        productDto,
+      const res = new ResponseData<null>(
+        null,
         HttpStatus.ERROR,
         HttpMessage.ERROR,
       );
@@ -65,8 +65,8 @@ export class ProductController {
       );
       return res;
     } catch (err) {
-      const res = new ResponseData<Product>(
-        this.productService.detailProduct(id),
+      const res = new ResponseData<null>(
+        null,
         HttpStatus.ERROR,
         HttpMessage.ERROR,
       );
@@ -84,8 +84,8 @@ export class ProductController {
       );
       return res;
     } catch (err) {
-      const res = new ResponseData<string>(
-        this.productService.updateProduct(),
+      const res = new ResponseData<null>(
+        null,
         HttpStatus.ERROR,
         HttpMessage.ERROR,
       );
@@ -103,8 +103,8 @@ export class ProductController {
       );
       return res;
     } catch (err) {
-      const res = new ResponseData<string>(
-        this.productService.deleteProduct(),
+      const res = new ResponseData<null>(
+        null,
         HttpStatus.ERROR,
         HttpMessage.ERROR,
       );
